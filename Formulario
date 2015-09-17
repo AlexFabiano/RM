@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <title>Formulario</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            input[type="text"] {background-color:white; color:black;}
+            input:invalid {background-color: #fcc; border-color:red;}
+            input:valid   {background-color:#9f9; border-color:blue;}
+            input[type="submit"] {background-color: white; color:white; color:black; border color:gray;}
+        </style>
+    </head>
+    <body>
+        <section>
+            <article>
+                <form id="form">
+                    <p>
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" pattern="[A-Z a-z]{1,}" title="Digite o seu nome apenas com letras"required>
+                    </p>
+                    <p>
+                        <label for="sobrenome">Sobrenome</label>
+                         <input type="text" id="sobrenome" name="sobrenome" pattern="[A-Z a-z]{1,}" title="Digite o seu sobrenome apenas com letras" required>
+                    </p>
+                    
+                    <p>
+                        <label for="DataN">Data de Nascimento</label>
+                         <input type="date" id="DataN" name="DataN" required >
+                    </p>
+                   
+                    <p>
+                        <label for="cel">Celular
+                          <input name="cel" id="cel" pattern="\d{2}-?\d{4}-?\d{4}" placeholder="(00)-0000-0000" title="Digite o celular no formato (nn)-nnnn-nnnn" >
+                         
+                        </label>
+                     </p>
+                     
+                     <p>
+                         <label for="fixo">Residencial Particular
+                           <input name="fixo" id="fixo" pattern="\d{2}-?\d{4}-?\d{4}" placeholder="(00)-0000-0000" title="Digite o telefone no formato (nn)-nnnn-nnnn" >
+                         
+                         </label>
+                     </p>
+                     
+                     <p>
+                         <label for="trab">Residencial Trabalho
+                           <input name="trab" id="trab" pattern="\d{2}-?\d{4}-?\d{4}" placeholder="(00)-0000-0000" title="Digite o telefone no formato (nn-nnnn-nnnn" >   
+                            
+                         </label>
+                     </p>
+                     
+                     <P>
+                         <label for="RG">RG
+                        <input name="RG" id="RG"  pattern="\d{10}" placeholder="0000000000"  title="Digite o RG formato nnnnnnnnnn" required>
+                         
+                        </label>
+                         
+                         
+                     </P>
+                     
+                    
+                     <p>
+                        <label for="cpf">CPF
+                        <input name="cpf" id="cpf"  pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"  placeholder="000.000.0000-00"title="Digite o CPF no formato nnn.nnn.nnn-nn" required>
+                        
+                        </label>
+                     </p>
+                     
+                     <p>
+                       <label for="Cidade">Cidade</label>
+                        <input type="text" id="Cidade" name="Cidade" required>
+                    </p>
+                    
+                    <p>
+                        <label for="estado">Estado</label>
+                         <input type="text" id="pais" name="estado"required>
+                    </p>
+                    
+                    <p>
+                        <label for="pais">Pais</label>
+                         <input type="text" id="pais" name="pais" required>
+                    </p>
+                    
+                    <p>
+                        <label for="end">Endereço</label>
+                         <input type="text" id="end" name="end" required>
+                    </p>
+                    
+                    <p>
+                        <label for="num">Numero</label>
+                         <input name="num" type="number" value=”12” step=”1”   min="1" max="9999"  placeholder="0000" title="Digite o umero no formato 1 a 99999" required>
+                    </p>
+                    
+                    <p>
+                      <label for="cep">CEP</label>
+                         <input name="cep" id="cep" name="cep" placeholder="00000-000" pattern="\d{5}-?\d{3}" title="Digite o CEP no formato 000000-000" required>  
+                    </p>
+                    
+                    <p>
+                        <label for="email">Email</label>
+                         <input type="email" id="email" name="email" placeholder="email@email.com" title="Digite o email no formato nome@email.com" required>
+                      
+                    </p>
+                    <input type="submit" value="Enviar">
+                </form>   
+            </article>
+        </section>
+    </body>
+</html>                        
+       
