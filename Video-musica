@@ -36,7 +36,9 @@
             body{
                 background-color:blue;
             }
+            
         </style>
+                  
     </head>
     <body>
         <!--
@@ -45,15 +47,36 @@
         -->
         
         <section style="margin-left: 30%">
-            <h1>Exmplo video<span>5</span></h1>
+            
+                           
+                                   
+                       
+ 
+   <h1>Exmplo video<span>5</span></h1>
             <h5>Video</h5>
-            <video  poster="img/design-grafico.jpg"  width="400" height="400" autoplay controls>
-                <source src="video/desabafo.mp4" type="video/mp4" />
-            </video> 
+            <input type="button" value="Play"
+               onclick="javascript:iniciaVideo();"/>
+            <input type="button" value="pause"
+               onclick="javascript:playVid();"/>            
+            <video  poster="img/design-grafico.jpg"  width="400" height="400"  id="desabafo">
+                <source src="video/desabafo.mp4" type="video/mp4" /></video>
             <h5>Exemplo Audio</h5>
             <audio autoplay controls>
                 <source src="audio/som.mp3" type="audio/mp3" />
             </audio>            
         </section>
+         <script type="text/javascript">
+                        var meuvideo = document.getElementById("desabafo");
+                        
+                            function iniciaVideo(){
+                                    meuvideo.play();
+                            }
+                            
+                            function playVid() { 
+                                    meuvideo.pause(); 
+                          } 
+
+                   </script>
     </body>
-</html>
+</html>    
+
