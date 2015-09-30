@@ -79,6 +79,7 @@
 			var videolist = [];
             var videoplay = 0;
 			
+			
           
                 function load() {
                 audiolist.push("audio/1.mp3");
