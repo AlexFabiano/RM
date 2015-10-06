@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exemplo de Audio e Vídeo com HTML 5</title>
+        <meta charset="UTF-8">
+        <style>
+          
+		  <!-- fontes de textos-->
+            @font-face {
+                font-family: medievo1;
+                src: url('font/SketchMatch.ttf');
+            }
+
+            @font-face {
+                font-family: medievo2;
+                src: url('font/THEMINION.ttf');
+            }
+            @font-face {
+                font-family: medievoNum;
+                src: url('font/Bubblegum.ttf');
+            }
+            section{                
+                text-align: center;
+
+            }
+
+            h5{
+                font: x-large/110% "medievo2",serif;
+                color:black;
+            }
+
+            h1{
+                font: x-large/110% "medievo1","medievo2","medievo1",serif;
+                color:black;
+            }
+            h1>span{            
+                font: 110% "medievoNum";
+                color: black;
+            }
+           
+            div>a{           
+                font: 24px "medievoNum";
+                color: black;
+                text-decoration: none;
+            }
+            #audio_controls{
+                text-align: center;
+                font: 24px "medievoNum";
+                color: black;
+            }
+
+            #video_controls{
+                text-align: center;
+                font: 24px "medievoNum";
+                color: black;
+			
+            }
+            #vol_aud{
+                text-align: center;
+                font: 20px "medievoNum";
+                color:black;                
+                text-decoration: none;
+            }
+
+            div>p{
+                font: 20px 'medievoNum';
+                color: black; 
+            }
+            
+			body{
+                padding: 0px;
+                margin: 0px;                
+                background:
+					url(img/logo.jpg) center top no-repeat,
+					url(img/cola.jpg)left center no-repeat;
+                    
+                    
+                background-size: 15%, 15%,15%,15%,15%;               
+                 background-color:#BEBEBE;
+				 
+
+            }
+            
+            section{                
+                text-align: center;
+                height: 950px;
+                
+            }
+		
+			<!-- animação-->	
+			.v_play{
+                -webkit-animation-name: video; 
+				-webkit-animation-duration: 6s; 
+				animation-name: video;
+				animation-duration: 6s;
+			}	
+				
+			
+			
+			
+																<!-- ativa/desativa botões -->
+			
+			                                                       .ativa{
+																   color: white;
+																   fontStyle: italic;
+																   }
+																   .desativa{
+																   color: black;
+																   fontStyle: normal;
+																   }
+																   
+																   
+																  
+																   
+																   
+																   
+																 
+			#video{
+                border: 2px solid black;                
+                border-radius: 30px;        
+                margin-top:15px;
+				margin-bottom:15px;
+				position: relative;
+				
+            }
+			
+			
+			
+		@keyframes video{
+            from{
+                width: 100px;
+                height: 100px;
+                opacity:0;                    
+            }
+
+            to{
+                width: 400px;
+                height: 400px;
+                opacity:1;                    
+            }
+		}
+            
+			
+			
+            header{
+				height: 10px;
+                background: linear-gradient( white, black);
+            }
+            
+            footer{
+				height: 10px;
+                background: linear-gradient ( black, white);
+            }
+            
+            a:hover{
+               font: 24px medievoNum;
+               color: white;
+               
+               transition: 1s;
+            }
+            
+
+            
+           
+			
+            
+           
+
+        </style>
+        <script type="text/javascript">
+            <!-- musica -->
+			window.addEventListener("load", load, false);
+             var audiolist = [];
+            var audioplay = 0;
+			var videolist = [];
+            var videoplay = 0;
+			
+            <!--palylist -->
+                function load() {
+                audiolist.push("audio/1.mp3");
+                audiolist.push("audio/2.mp3");
+				audiolist.push("audio/3.mp3");
+                audiolist.push("audio/4.mp3");
+			    audiolist.push("audio/5.mp3");
+			}	
+            
+             
+			 <!-- video-->
+                function v_play() {
+                var video = document.getElementById('video');
+                var videotitle = document.getElementById('video_title');
+			    video.className="v_play";
+
+                video.play();
+                videotitle.innerHTML = "Iniciando video <i>aguarde...</i> ";
+                document.getElementById('vplay').className="ativa";
+				document.getElementById('vpause').className="desativa";
+				document.getElementById('vstop').className="desativa";
+                
+			
+			<!-- pause-->	
+            
+			}
+			
+			    function v_pause() {
+                var video = document.getElementById('video');
+				var videotitle = document.getElementById('video_title');
+                
+                video.pause();
+                videotitle.innerHTML = "Video pausado <i>espere</i> ";
+                document.getElementById('vpause').className="ativa";
+				document.getElementById('vplay').className="desativa";
+				document.getElementById('vstop').className="desativa";
+                
+			}
+			
+			
+			<!-- stop-->
+			
+			    function v_stop(){
+				var video = document.getElementById('video');
+				var videotitle = document.getElementById('video_title');
+				
+
+                video.pause();
+				video.currentTime = 0;
+				videotitle.innerHTML = "video parado <i>acabou</i> ";
+				document.getElementById('vpause').className="desativa";
+				document.getElementById('vplay').className="desativa";
+                document.getElementById('vstop').className="ativa";
+			
+                
+			}
+			
+			<!-- zoo + -->
+			function v_volmais() {
+				var video = document.getElementById('video');
+				if(video.height < 800){
+					video.height+= 100;
+					video.width+= 100;
+				}
+			}
+			
+			<!-- zoo - -->
+			
+				
+			function v_volmenos() { 
+				var video = document.getElementById('video');
+				if(video.height > 400){
+				video.width -= 100;
+				video.height-= 100;
+				}				
+			}
+			
+			<!-- volume video -->
+                function setvolume_vid() {
+                var video = document.getElementById('video');
+                var vol = document.getElementById('vol');
+                video.volume = vol.value;
+                document.getElementById('volume').innerHTML = vol.value;
+            }
+			
+			<!--  volume + video -->
+			   function v_volmais() {
+				var video = document.getElementById('video');
+				video.width += 100;
+			}
+			
+			<!--  volume - video -->
+			    function v_volmenos() { 
+				var video = document.getElementById('video');
+				video.width -= 100; 
+			}
+			  
+			   <!-- AUDIO -->
+			   
+			   <!-- Trocar os className de todos os audio--> 
+			   
+			   <!-- stop -->
+			    function a_stop(){
+				var audio = document.getElementById('audio');	
+                var audiotitle = document.getElementById('audio_title');
+				audio.pause();
+				audio.currentTime = 0;
+
+				audiotitle.innerHTML = "Faixa" + (audioplay+1) + " "+ audiolist[audioplay];
+                document.getElementById('apause').className= "desativa";
+                document.getElementById('aplay').className= "desativa";
+				document.getElementById('astop').className="ativa";
+				document.getElementById('anext').className= "desativa";
+            }    
+				
+				
+                
+			
+       
+	      
+				<!--  play -->
+                function a_play() {
+                var audio = document.getElementById('audio');
+                if (audio.src === "")
+                    audio.src = audiolist[audioplay];
+                var audiotitle = document.getElementById('audio_title');
+
+                audio.play(); 
+				audiotitle.innerHTML = "Faixa" + (audioplay+1) + " "+ audiolist[audioplay];
+                document.getElementById('aplay').className= "ativa";
+				document.getElementById('anext').className= "desativa";
+                document.getElementById('astop').className= "desativa";
+				document.getElementById('apause').className= 'desativa';
+			}	
+				
+                
+				
+             
+			 
+			 <!-- next -->
+			 
+                function a_next() {
+				
+				
+				
+				document.getElementById('anext').className= "ativa";
+				document.getElementById('aplay').className="desativa";
+				document.getElementById('astop').className= "desativa";
+				document.getElementById('apause').className= "desativa";
+				
+				if (audioplay < audiolist.length -1 ){
+                    audioplay+=1;
+					
+					}
+                else{
+                    audioplay = 0;
+					}
+                var audio = document.getElementById('audio');
+                audio.src = audiolist[audioplay];
+                
+				a_play();
+				
+            }
+                
+				
+				
+				
+                  
+			
+			<!--  pause -->
+			 function a_pause() {
+                var audio = document.getElementById('audio');
+				var audiotitle = document.getElementById('audio_title');
+
+                audio.pause();
+				audiotitle.innerHTML = "Faixa" + (audioplay+1) + " "+ audiolist[audioplay];
+                document.getElementById('apause').className= "ativa";
+				document.getElementById('aplay').className= "desativa";
+				document.getElementById('astop').className= "desativa";
+				document.getElementById('anext').className= "desativa";
+			}	
+				
+				
+                <!-- volume audio -->
+			function setvolume_aud() {
+                var audio = document.getElementById('audio');
+                var avol = document.getElementById('avol');
+                if (audio.src === "")
+                    audio.src = audiolist[audioplay];
+                audio.volume = avol.value;
+                document.getElementById('vol_aud').innerHTML = avol.value;
+
+            }
+        </script>
+
+
+			
+             
+             
+			
+			
+			
+		
+	<body>
+</head>
+		
+		
+
+
+	
+    
+        <!--        
+           Exemplo de Audio e Video Com HTML 5   -->  
+      
+				<header></header>		
+		
+			<section>
+			
+			
+			
+			
+			<br><br><br><br>
+			
+			
+			
+			
+            <h1>Video design-grafico</h1>
+				<!-- twitter-->
+		
+		<a href="https://twitter.com/alexfabiano18" class="twitter-follow-button" data-show-count="false">Follow @alexfabiano18</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		
+		<br>
+		<!--	google + -->
+	
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+		<g:plusone size="tall"></g:plusone>
+   
+		<br>
+   
+		<!-- facebook -->
+ 
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.4";
+		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+
+		<br>
+
+		<!--compartilhar-->
+
+		<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count"></div>
+
+	<br>
+<br>
+		<div class="fb-like"></div>	
+			
+			 		
+            <h5>Desabafo</h5>
+            <div id="video_controls">
+                <p id="video_title"></p>
+                <a href="javascript:v_play();" id="vplay">play</a> |
+				 <a href="javascript:v_pause();" id="vpause">pause</a> |
+                 <a href="javascript:v_stop();" id="vstop">stop</a> |
+				 <a href="javascript:v_volmais();"> + </a> |
+				<a href="javascript:v_volmenos();"> -  </a> | <br> <br>
+					<a>vol:</a><input id="vol" 
+                                  type="range" 
+                                  max='1' 
+                                  min="0" 
+                                  step="0.1" 
+                                  value="0.5" 
+                                  onchange="javascript:setvolume_vid()">
+									 <a id="volume"></a>
+		   </div>
+            <video id="video" poster="img/design-grafico.jpg"  width="400" height="400">
+                <source src="video/desabafo.mp4" type="video/mp4" />
+            </video> 
+            <h5>Faixas para ralaxar</h5>
+            <div id="audio_controls">
+                <p id="audio_title"></p>
+                <a href="javascript:a_play();" id="aplay">play</a> |
+                <a href="javascript:a_next();" id="anext">next</a> |
+                <a href="javascript:a_pause();" id="apause">pause</a> |
+				<a href="javascript:a_stop();" id="astop">stop</a> <br> <br>
+				<a>vol:</a><input id="avol" 
+                                  type="range" 
+                                  max='1' 
+                                  min="0" 
+                                  step="0.1" 
+                                  value="0.5" 
+                                  onchange="javascript:setvolume_aud()">
+                <a id="vol_aud"></a>
+            </div>
+            <audio id="audio">
+
+            </audio>
+
+        </section>
+    </body>
+</html>
